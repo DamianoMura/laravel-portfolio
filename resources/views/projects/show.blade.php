@@ -9,7 +9,8 @@
         <h3>Author: {{ $project->author }}</h3>
     </div>
       <div class="flex flex-col flex-grow space-x-4 sm:flex-row sm:flex-grow-0">
-        <a class="p-1 font-bold text-yellow-500 border-4 border-yellow-500 rounded-3xl hover:bg-yellow-500 hover:text-yellow-100 focus:outline-none focus:ring" href="{{route('projects.edit', $project->id)}}"><i class="text-2xl fa-solid fa-pen-to-square"></i> </a>
+        <a class="font-bold text-yellow-500 hover:text-yellow-800 focus:outline-none focus:ring"
+          href="{{route('projects.edit', $project->id)}}"><i class="text-2xl fa-solid fa-pen-to-square"></i> </a>
         {{-- <form action="{{route('projects.destroy', $project)}}">
           @csrf
           @method('DELETE')
@@ -19,7 +20,7 @@
         <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
         <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
         <button command="show-modal" commandfor="dialog"
-          class="p-1 font-bold text-red-500 border-4 border-red-500 rounded-3xl hover:bg-red-500 hover:text-red-100 focus:outline-none focus:ring"><i class="text-2xl fa-solid fa-trash-can"></i></button>
+          class="font-bold text-red-500 hover:text-red-800 focus:outline-none focus:ring"><i class="text-2xl fa-solid fa-trash-can"></i></button>
         <el-dialog>
           <dialog id="dialog" aria-labelledby="dialog-title"
             class="fixed inset-0 overflow-y-auto bg-transparent size-auto max-h-none max-w-none backdrop:bg-transparent">

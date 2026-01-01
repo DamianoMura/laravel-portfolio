@@ -7,7 +7,7 @@
         Projects
       </h2>
       <a class="p-1 font-bold text-green-500 border-4 border-green-500 rounded-3xl hover:bg-green-500 hover:text-green-100 focus:outline-none focus:ring"
-        href="{{route('projects.create')}}"><i class="text-3xl fa-solid fa-file-circle-plus"></i></a>
+        href="{{route('projects.create')}}"><i class="text-2xl fa-solid fa-file-circle-plus"></i></a>
       </div>
 
   </x-slot>
@@ -29,17 +29,18 @@
                           <h2 class="text-xl font-semibold">{{ $project->title }}</h2>
                           <p class="text-sm text-gray-600">By {{ $project->author }} | Category: {{ $project->category }}</p>
                         </div>
-                        <div class="flex ml-auto space-x-4">
-                          <a class="p-1 font-bold text-blue-500 border-4 border-blue-500 rounded-3xl hover:bg-blue-500 hover:text-blue-100 focus:outline-none focus:ring"
-                            href="{{route('projects.show', $project->id)}}"><i class="text-3xl fa-solid fa-eye"></i> </a>
-                          <a class="p-1 font-bold text-yellow-500 border-4 border-yellow-500 rounded-3xl hover:bg-yellow-500 hover:text-yellow-100 focus:outline-none focus:ring"
+                        <div class="flex items-center justify-between ml-auto space-x-4">
+                          {{-- buttons --}}
+                          <a class="font-bold text-blue-500 hover:text-blue-800 focus:outline-none focus:ring"
+                            href="{{route('projects.show', $project->id)}}"><i class="text-2xl fa-solid fa-eye"></i> </a>
+                          <a class="font-bold text-yellow-500 hover:text-yellow-800 focus:outline-none focus:ring"
                             href="{{route('projects.edit', $project->id)}}"><i class="text-2xl fa-solid fa-pen-to-square"></i> </a>
                         
                         
                           <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
                           <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
                           <button command="show-modal" commandfor="dialog"
-                            class="p-1 font-bold text-red-500 border-4 border-red-500 rounded-3xl hover:bg-red-500 hover:text-red-100 focus:outline-none focus:ring"><i
+                            class="font-bold text-red-500 hover:text-red-800 focus:outline-none focus:ring"><i
                               class="text-2xl fa-solid fa-trash-can"></i></button>
                           <el-dialog>
                             <dialog id="dialog" aria-labelledby="dialog-title"
