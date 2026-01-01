@@ -8,7 +8,7 @@
   <div class="py-12">
     <div class="flex content-center justify-between mx-auto mb-4 max-w-7xl sm:px-6 lg:px-8"> 
      
-      <a href='{{ $post->id > 1 ? route('posts.show', $post->id - 1) : "#" }}' ><- prev  </a>
+      <a href='{{ $post->id > 1 ? route('posts.show', $post->id - 1) : 1 }}' ><- prev  </a>
      
       {{ $post->id." / ".$post->count() }}
 
