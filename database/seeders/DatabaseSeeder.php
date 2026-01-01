@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Project;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
@@ -23,6 +24,12 @@ class DatabaseSeeder extends Seeder
                 'content' => Faker::create()->paragraph,
                 'author' => Faker::create()->name,
                 'category' => Faker::create()->word,
+            ]);
+            Project::create([
+                'title' => Faker::create()->sentence,
+                'description' => Faker::create()->paragraph,
+                'url' => Faker::create()->url,
+                'image_path' => Faker::create()->imageUrl(),
             ]);
         }
     }
