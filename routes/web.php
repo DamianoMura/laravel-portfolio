@@ -24,6 +24,6 @@ Route::middleware('auth', 'verified')
         Route::get('/', [DashboardController::class, 'index'])->name('index');
     });
 
-
+Route::resource('posts', \App\Http\Controllers\PostController::class);
 
 require __DIR__ . '/auth.php';

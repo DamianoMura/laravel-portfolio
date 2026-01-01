@@ -10,6 +10,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return Auth::check();
+        return view('admin.dashboard');
     }
 }
