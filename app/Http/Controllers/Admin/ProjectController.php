@@ -15,7 +15,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        $projects = Project::orderBy('created_at', 'asc')->get();
+        $projects = Project::orderBy('created_at', 'desc')->get();
         return view('projects.index', compact('projects'));
     }
 
@@ -33,7 +33,13 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
 
-        return $request->all();
+        $data =  $request->all();
+
+        $newProject = new Project();
+        $newProject->title = $data['title'];
+        $newProject->description = $data['description'];
+        $newProject->save();
+        return redirect()->route('projects.index');
     }
 
     /**
