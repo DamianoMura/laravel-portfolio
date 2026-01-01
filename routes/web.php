@@ -24,7 +24,7 @@ Route::middleware('auth', 'verified')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
     });
-
-Route::resource('posts', PostController::class)->middleware(['auth', 'verified']);
+//by uncommenting underneath this line you can add the resource route middleware(available for logged in users as roles are not defined yet) for posts created as a livecoding while watching the lesson 12 (CRUD 1)
+// Route::resource('posts', PostController::class)->middleware(['auth', 'verified']);
 
 require __DIR__ . '/auth.php';
