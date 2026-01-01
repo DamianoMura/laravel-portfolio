@@ -27,9 +27,9 @@ class DatabaseSeeder extends Seeder
             ]);
             Project::create([
                 'title' => Faker::create()->sentence,
-                'description' => Faker::create()->paragraph,
-                'url' => Faker::create()->url,
-                'image_path' => Faker::create()->imageUrl(),
+                'author' => Faker::create()->name(),
+                'content' => Faker::create()->paragraph,
+                'category' => Faker::create()->word,
             ]);
         }
     }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-
+use App\Models\User;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -34,10 +35,12 @@ class ProjectController extends Controller
     {
 
         $data =  $request->all();
-
+        $user = Auth::user();
         $newProject = new Project();
         $newProject->title = $data['title'];
-        $newProject->description = $data['description'];
+        $newProject->author = $user->name;
+        $newProject->category = $data['category'];
+        $newProject->content = $data['content'];
         $newProject->save();
         return redirect()->route('projects.index');
     }
@@ -55,7 +58,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -63,7 +66,12 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->all();
+        $project->title = $data['title'];
+        $project->category = $data['category'];
+        $project->content = $data['content'];
+        $project->update();
+        return redirect()->route('projects.index');
     }
 
     /**
@@ -71,6 +79,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('projects.index');
     }
 }

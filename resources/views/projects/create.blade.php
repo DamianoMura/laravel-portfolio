@@ -17,10 +17,14 @@
               <label for="title" class="block mb-2 font-bold text-gray-700 dark:text-gray-300">Title</label>
               <input type="text" name="title" id="title" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" required>
             </div>
+            <div class="mb-4">
+              <label for="category" class="block mb-2 font-bold text-gray-700 dark:text-gray-300">Category</label>
+              <input type="text" name="category" id="category" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" required>
+            </div>
 
             <div class="mb-4">
-              <label for="description" class="block mb-2 font-bold text-gray-700 dark:text-gray-300">Description</label>
-              <textarea name="description" id="description" rows="4" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" required></textarea>
+              <label for="content" class="block mb-2 font-bold text-gray-700 dark:text-gray-300">Description</label>
+              <textarea name="content" id="content" rows="4" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" required></textarea>
             </div>
 
             <div>
