@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Project;
 use App\Models\Role;
+use App\Models\technology;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
@@ -21,42 +22,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Category::create([
-            'name' => "Unspecified",
-            'description' => "a project that has no category ",
-        ]);
-
-
-        User::create([
-            'name' => 'Demianz',
-            'email' => 'demianz@jdwdev.it',
-            'password' => bcrypt('asdasdasd'),
-        ]);
-
-        Role::create([
-            'name' => 'DEVELOPER',
-        ]);
-        Role::create([
-            'name' => 'admin',
-        ]);
-        Role::create([
-            'name' => 'user',
-        ]);
-        User::first()->roles()->attach(Role::where('name', 'DEVELOPER')->first());
-
-
-        for ($i = 0; $i < 3; $i++) {
-            Post::create([
-                'title' => Faker::create()->sentence,
-                'content' => Faker::create()->paragraph,
-                'author' => Faker::create()->name(),
-                'category' => Faker::create()->name(),
-            ]);
-            Project::create([
-                'title' => Faker::create()->sentence,
-                'author' => Faker::create()->name(),
-                'content' => Faker::create()->paragraph,
-            ]);
-        }
+        $this->call(TechnologySeeder::class);
+        $this->call(CategorySeeder::class);
+        $this->call(RolesSeeder::class);
+        $this->call(DEVSeeder::class);
+        // for ($i = 0; $i < 3; $i++) {
+        //     Post::create([
+        //         'title' => Faker::create()->sentence,
+        //         'content' => Faker::create()->paragraph,
+        //         'author' => Faker::create()->name(),
+        //         'category' => Faker::create()->name(),
+        //     ]);
+        //     Project::create([
+        //         'title' => Faker::create()->sentence,
+        //         'author' => Faker::create()->name(),
+        //         'content' => Faker::create()->paragraph,
+        //     ]);
+        // }
     }
 }
