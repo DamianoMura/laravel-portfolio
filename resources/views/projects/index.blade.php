@@ -6,9 +6,20 @@
       <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
         Projects
       </h2>
+   <div class="buttons">
+    <a class="p-1 font-bold text-green-500 border-4 border-green-500 rounded-3xl hover:bg-green-500 hover:text-green-100 focus:outline-none focus:ring"
+        href="{{route('projects.create')}}"><i class="text-2xl fa-solid fa-file-circle-plus"></i> create project</a>
       <a class="p-1 font-bold text-green-500 border-4 border-green-500 rounded-3xl hover:bg-green-500 hover:text-green-100 focus:outline-none focus:ring"
-        href="{{route('projects.create')}}"><i class="text-2xl fa-solid fa-file-circle-plus"></i></a>
-      </div>
+        href="{{route('categories.index')}}"><i class="fa-solid fa-folder-tree"></i> manage category</a>
+   </div>
+  </div>
+  @if (session('success'))
+    <div class="p-4 mt-5 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+      role="alert">
+      {{ session('success') }}
+    </div>
+  @endif
+  
 
   </x-slot>
 

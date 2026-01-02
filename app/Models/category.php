@@ -9,6 +9,7 @@ class category extends Model
 {
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
     use HasFactory;
+    protected $fillable = ['name', 'description'];
     public function projects()
     {
         return $this->hasMany(Project::class);

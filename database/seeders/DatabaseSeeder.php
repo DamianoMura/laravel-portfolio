@@ -21,21 +21,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Category::create([
-            'name' => "Boolean Course Exercises",
-            'description' => "Exercises from the Boolean Main Course, covering all the main topics. as HTML, CSS, JavaScript, MySQL , Express.js, React.js, Node.js",
+            'name' => "Unspecified",
+            'description' => "a project that has no category ",
         ]);
-        Category::create([
-            'name' => "Boolean Specialisation Exercises",
-            'description' => "Exercises from the Boolean Specialisation Course, about PHP and Laravel Framework.",
-        ]);
-        Category::create([
-            'name' => "Personal Projects",
-            'description' => "Personal projects built with all the technologies learned during the Boolean Course and through self-learning.",
-        ]);
-        Category::create([
-            'name' => "Funny Projects",
-            'description' => "Projects made just for fun or as experiments.",
-        ]);
+
 
         User::create([
             'name' => 'Demianz',
@@ -57,7 +46,6 @@ class DatabaseSeeder extends Seeder
                 'title' => Faker::create()->sentence,
                 'author' => Faker::create()->name(),
                 'content' => Faker::create()->paragraph,
-                'category_id' => Category::inRandomOrder()->first()->id,
             ]);
         }
     }

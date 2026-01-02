@@ -44,7 +44,7 @@ class ProjectController extends Controller
         $newProject->category_id = $data['category'];
         $newProject->content = $data['content'];
         $newProject->save();
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('success', 'Project created successfully.');
     }
 
     /**
@@ -74,7 +74,7 @@ class ProjectController extends Controller
         $project->category_id = $data['category'];
         $project->content = $data['content'];
         $project->update();
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
     }
 
     /**
@@ -83,6 +83,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('success', 'Project deleted successfully.');
     }
 }
