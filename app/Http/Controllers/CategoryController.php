@@ -83,8 +83,13 @@ class CategoryController extends Controller
             $project->update(['category_id' => 1]);
             // dd('viewing updat projects :' . $project->category_id);
         }
+        if ($category->id == 1) {
+            $message = "Default category cannot be deleted.";
+        } else {
+            $message = "Category deleted successfully.";
+        }
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('categories.index')->with('success', $message);
     }
 }
