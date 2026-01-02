@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Models\technology;
 
 class ProjectController extends Controller
 {
@@ -16,6 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        $technologies = technology::all();
         $projects = Project::all();
         $projects = Project::orderBy('updated_at', 'desc')->get();
         return view('projects.index', compact('projects'));
@@ -26,8 +28,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $technologies = technology::all();
         $categories = Category::all();
-        return view('projects.create', compact('categories'));
+
+        return view('projects.create', compact('categories', 'technologies'));
     }
 
     /**
@@ -44,7 +48,11 @@ class ProjectController extends Controller
         $newProject->category_id = $data['category'];
         $newProject->content = $data['content'];
         $newProject->save();
+        $newProject->technologies()->attach($data['technologies']);
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');
+        // $newProject->technologies()->attach($data['technologies']);
+        // return redirect()->route('projects.index')->with('success', 'Project created successfully.');
+        // return redirect()->route('projects.index')->with('success', 'Project created successfully.');
     }
 
     /**
@@ -60,8 +68,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $technologies = technology::all();
         $categories = Category::all();
-        return view('projects.edit', compact('project', 'categories'));
+        return view('projects.edit', compact('project', 'categories', 'technologies'));
     }
 
     /**
@@ -73,6 +82,7 @@ class ProjectController extends Controller
         $project->title = $data['title'];
         $project->category_id = $data['category'];
         $project->content = $data['content'];
+        $project->technologies()->sync($data['technologies']);
         $project->update();
         return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
     }

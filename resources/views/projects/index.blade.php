@@ -20,6 +20,7 @@
     </div>
   @endif
   
+  {{Auth::user()->roles->pluck('name')->join(', ')}}
 
   </x-slot>
 
@@ -39,6 +40,17 @@
                         
                           <h2 class="text-xl font-semibold">{{ $project->title }}</h2>
                           <p class="text-sm text-gray-600">By {{ $project->author }} | Category: {{ $project->category->name }}</p>
+                          
+                          <div class="flex flex-wrap items-center gap-2 my-2">
+                            @foreach($project->technologies as $technology)
+                           
+                             <span>
+
+                              <i class="mx-5 justify-center {{ $technology->font_awesome_class}} {{ " decoration-[".$technology->color."]" }}"></i>
+                              {{ $technology->name }}
+                            </span> 
+                            @endforeach
+                              </div>
                         </div>
                         <div class="flex items-center justify-between ml-auto space-x-4">
                           {{-- buttons --}}

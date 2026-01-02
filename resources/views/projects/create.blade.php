@@ -31,7 +31,19 @@
               <label for="content" class="block mb-2 font-bold text-gray-700 dark:text-gray-300">Description</label>
               <textarea name="content" id="content" rows="4" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" required></textarea>
             </div>
-
+            <div class="mb-4">
+              <label for="technologies" class="block mb-2 font-bold text-gray-700 dark:text-gray-300">Technologies</label>
+              @foreach ($technologies as $item)
+                <div class="inline-block mr-4">
+                  <input type="checkbox" name="technologies[]" id="technology_{{ $item->id }}" value="{{ $item->id }}" class="mr-2">
+                  <label for="technology_{{ $item->id }}" class="text-gray-700 dark:text-gray-300">
+                    <i class="{{ $item->font_awesome_class }}"></i>
+                    {{ $item->name }}</label>
+                </div>
+                  
+              @endforeach
+            </div>
+         
             <div>
               <button type="submit" class="px-4 py-2 font-bold bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:ring">Create Project</button>
             </div>
