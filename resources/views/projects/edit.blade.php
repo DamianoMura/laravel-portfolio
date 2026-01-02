@@ -33,7 +33,7 @@
                     <option value="{{ $category->id }}" {{$category->id == $project->category_id ? "selected" : ""}}>{{ $category->name }}</option>
                     @endforeach
                   </select>
-                
+                  
                 </div>
             </div>
 
