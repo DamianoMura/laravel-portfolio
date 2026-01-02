@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Models\technology;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -41,6 +42,11 @@ class ProjectController extends Controller
     {
 
         $data =  $request->all();
+        if ($request->has('file')) {
+            $img_path = Storage::putFile('uploads', $data['file']);
+            $data['img_path'] = $img_path;
+        }
+
         $newProject = new Project();
         $newProject->title = $data['title'];
         $newProject->author = Auth::user()->id;

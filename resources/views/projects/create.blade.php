@@ -18,7 +18,7 @@
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
       <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-          <form method="POST" action="{{ route('projects.store') }}">
+          <form method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-4">
@@ -43,7 +43,11 @@
                   
               @endforeach
             </div>
-         
+            <div class="mb-4">
+              <label for="file" class="block mb-2 font-bold text-gray-700 dark:text-gray-300">Project image</label>
+              <input type="file" name="file" id="file" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
+              
+            </div>
             <div>
               <button type="submit" class="px-4 py-2 font-bold bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:ring">Create Project</button>
             </div>
