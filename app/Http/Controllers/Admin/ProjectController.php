@@ -50,9 +50,6 @@ class ProjectController extends Controller
         $newProject->save();
         $newProject->technologies()->attach($data['technologies']);
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');
-        // $newProject->technologies()->attach($data['technologies']);
-        // return redirect()->route('projects.index')->with('success', 'Project created successfully.');
-        // return redirect()->route('projects.index')->with('success', 'Project created successfully.');
     }
 
     /**
