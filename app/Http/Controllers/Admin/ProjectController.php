@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Category;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        $projects = Project::orderBy('created_at', 'desc')->get();
+        $projects = Project::orderBy('updated_at', 'desc')->get();
         return view('projects.index', compact('projects'));
     }
 
@@ -25,7 +26,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        $categories = Category::all();
+        return view('projects.create', compact('categories'));
     }
 
     /**
@@ -39,7 +41,7 @@ class ProjectController extends Controller
         $newProject = new Project();
         $newProject->title = $data['title'];
         $newProject->author = $user->name;
-        $newProject->category = $data['category'];
+        $newProject->category_id = $data['category'];
         $newProject->content = $data['content'];
         $newProject->save();
         return redirect()->route('projects.index');
@@ -58,7 +60,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('projects.edit', compact('project'));
+        $categories = Category::all();
+        return view('projects.edit', compact('project', 'categories'));
     }
 
     /**
@@ -68,7 +71,7 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $project->title = $data['title'];
-        $project->category = $data['category'];
+        $project->category_id = $data['category'];
         $project->content = $data['content'];
         $project->update();
         return redirect()->route('projects.index');

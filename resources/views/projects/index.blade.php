@@ -27,7 +27,7 @@
                     <div>
                         
                           <h2 class="text-xl font-semibold">{{ $project->title }}</h2>
-                          <p class="text-sm text-gray-600">By {{ $project->author }} | Category: {{ $project->category }}</p>
+                          <p class="text-sm text-gray-600">By {{ $project->author }} | Category: {{ $project->category->name }}</p>
                         </div>
                         <div class="flex items-center justify-between ml-auto space-x-4">
                           {{-- buttons --}}

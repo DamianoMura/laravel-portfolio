@@ -9,4 +9,8 @@ class Project extends Model
 {
     /** @use HasFactory<\Database\Factories\ProjectFactory> */
     use HasFactory;
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

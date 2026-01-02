@@ -19,7 +19,12 @@
             </div>
             <div class="mb-4">
               <label for="category" class="block mb-2 font-bold text-gray-700 dark:text-gray-300">Category</label>
-              <input type="text" name="category" id="category" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" required>
+              <select name="category" id="category" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" required>
+                @foreach($categories as $category)
+                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+              </select>
+                
             </div>
 
             <div class="mb-4">
