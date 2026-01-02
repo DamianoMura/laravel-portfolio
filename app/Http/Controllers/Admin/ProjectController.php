@@ -79,8 +79,12 @@ class ProjectController extends Controller
         $project->title = $data['title'];
         $project->category_id = $data['category'];
         $project->content = $data['content'];
-        $project->technologies()->sync($data['technologies']);
         $project->update();
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($data['technologies']);
+        } else {
+            $project->technologies()->detach();
+        }
         return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
     }
 
