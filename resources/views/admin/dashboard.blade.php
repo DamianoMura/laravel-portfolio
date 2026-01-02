@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-          <p class="text-3xl text-center">Welcome {{Auth::user()->name}} ! </p>
+          <p class="text-3xl text-center">Welcome {{Auth::user()->name}} ! {{Auth::user()->roles->pluck('name')->join(', ')}} </p>
         </h2>
     </x-slot>
 

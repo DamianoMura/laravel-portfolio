@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Project;
+use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
@@ -32,7 +33,16 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('asdasdasd'),
         ]);
 
-
+        Role::create([
+            'name' => 'DEVELOPER',
+        ]);
+        Role::create([
+            'name' => 'admin',
+        ]);
+        Role::create([
+            'name' => 'user',
+        ]);
+        User::first()->roles()->attach(Role::where('name', 'DEVELOPER')->first());
 
 
         for ($i = 0; $i < 3; $i++) {

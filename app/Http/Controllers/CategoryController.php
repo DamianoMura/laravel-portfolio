@@ -87,8 +87,8 @@ class CategoryController extends Controller
             $message = "Default category cannot be deleted.";
         } else {
             $message = "Category deleted successfully.";
+            $category->delete();
         }
-        $category->delete();
 
         return redirect()->route('categories.index')->with('success', $message);
     }
