@@ -39,7 +39,7 @@
                     <div>
                         
                           <h2 class="text-xl font-semibold">{{ $project->title }}</h2>
-                          <p class="text-sm text-gray-600">By {{ $project->author }} | Category: {{ $project->category->name }}</p>
+                          <p class="text-sm text-gray-600">By {{ App\Models\User::find($project->author)->name; }} | Category: {{ $project->category->name }}</p>
                           
                           <div class="flex flex-wrap items-center gap-2 my-2">
                             @foreach($project->technologies as $technology)

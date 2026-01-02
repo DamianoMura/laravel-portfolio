@@ -41,10 +41,10 @@ class ProjectController extends Controller
     {
 
         $data =  $request->all();
-        $user = Auth::user();
+        $user = Auth::user()->id;
         $newProject = new Project();
         $newProject->title = $data['title'];
-        $newProject->author = $user->name;
+        $newProject->author = $user;
         $newProject->category_id = $data['category'];
         $newProject->content = $data['content'];
         $newProject->save();

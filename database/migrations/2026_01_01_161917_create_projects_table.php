@@ -17,8 +17,8 @@ return new class extends Migration
     {
 
         Schema::create('projects', function (Blueprint $table) {
-            $table->id();
-            $table->string('author', 30);
+            $table->id()->unique();
+            $table->foreignId('author')->default(1)->constrained('users')->onDelete("cascade");
             $table->string('title', 100);
             $table->text('content', 2555);
             $table->foreignId('category_id')->default(1)->constrained('categories')->onDelete("SET DEFAULT");

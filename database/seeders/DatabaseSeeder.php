@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(RolesSeeder::class);
         $this->call(DEVSeeder::class);
+        $this->call(FirstPostSeeder::class);
         // for ($i = 0; $i < 3; $i++) {
         //     Post::create([
         //         'title' => Faker::create()->sentence,

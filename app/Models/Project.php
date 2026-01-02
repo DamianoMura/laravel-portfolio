@@ -18,4 +18,9 @@ class Project extends Model
     {
         return $this->belongsToMany(technology::class);
     }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
