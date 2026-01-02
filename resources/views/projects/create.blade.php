@@ -41,7 +41,6 @@
                     {{ $item->name }}</label>
                 </div>
                   
-              @endforeach
             </div>
             <div class="mb-4">
               <label for="file" class="block mb-2 font-bold text-gray-700 dark:text-gray-300">Project image</label>

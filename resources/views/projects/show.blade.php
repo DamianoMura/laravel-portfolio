@@ -81,7 +81,10 @@
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
       <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-       
+          @if ($project->img_path)
+          <img src="{{asset('/storage/'.$project->img_path)}}" alt="asd" class="w-64 h-64 mb-4 rounded-lg shadow-md object-fit">
+            
+          @endif
           <p class="mb-4">{{ $project->content }}</p>
 
           <div class="flex items-center justify-between p-4 mb-6 text-gray-800 rounded-lg bg-slate-200 dark:bg-gray-700 dark:text-gray-300 ">

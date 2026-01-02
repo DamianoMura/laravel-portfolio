@@ -45,12 +45,15 @@ class ProjectController extends Controller
         if ($request->has('file')) {
             $img_path = Storage::putFile('uploads', $data['file']);
             $data['img_path'] = $img_path;
+        } else {
+            $data['img_path'] = null;
         }
 
         $newProject = new Project();
         $newProject->title = $data['title'];
         $newProject->author = Auth::user()->id;
         $newProject->category_id = $data['category'];
+        $newProject->img_path = $data['img_path'];
         $newProject->content = $data['content'];
         $newProject->save();
         $newProject->technologies()->attach($data['technologies']);
@@ -81,6 +84,15 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $data = $request->all();
+        if ($request->has('file')) {
+            if ($project->img_path) {
+
+                Storage::delete($project->img_path);
+            }
+
+            $img_path = Storage::putFile('uploads', $data['file']);
+            $project->img_path = $img_path;
+        }
         $project->title = $data['title'];
         $project->category_id = $data['category'];
         $project->content = $data['content'];
@@ -98,6 +110,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->img_path) {
+
+            Storage::delete($project->img_path);
+        }
         $project->delete();
         return redirect()->route('projects.index')->with('success', 'Project deleted successfully.');
     }
