@@ -12,7 +12,7 @@ class Project extends Model
     protected $fillable = ['author', 'title', 'content', 'category_id'];
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(category::class);
     }
     public function technologies()
     {
