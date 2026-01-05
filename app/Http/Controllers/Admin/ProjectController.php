@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Category;
+use App\Models\category;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Models\technology;
@@ -30,7 +30,7 @@ class ProjectController extends Controller
     public function create()
     {
         $technologies = technology::all();
-        $categories = Category::all();
+        $categories = category::all();
 
         return view('projects.create', compact('categories', 'technologies'));
     }
@@ -74,7 +74,7 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $technologies = technology::all();
-        $categories = Category::all();
+        $categories = category::all();
         return view('projects.edit', compact('project', 'categories', 'technologies'));
     }
 
